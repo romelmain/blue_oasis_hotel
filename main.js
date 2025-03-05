@@ -205,5 +205,9 @@ async function register() {
     }),
   });
   alert(response.status);
-  window.location.replace("http://localhost:8080");
+  login();
+}
+
+function login() {
+  window.location.replace("http://localhost:4200");
 }
