@@ -209,7 +209,9 @@ async function register() {
         },
       }),
     });
-    alert(response.status);
+    console.log(response.status);
+    alert("User registred successfull !!");
+    sessionStorage.setItem("token", "value");
     login();
   }
 }
