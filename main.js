@@ -193,19 +193,25 @@ async function register() {
   const form = document.forms["registerForm"];
   const username = form.elements["username"].value;
   const password = form.elements["password"].value;
-  const response = await fetch("http://localhost:8080/auth/sign-up", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      username: username,
-      password: password,
-      roleRequest: {
-        roleListName: ["GUEST"],
-      },
-    }),
-  });
-  alert(response.status);
-  login();
+
+  if (username === "" || password === "") {
+    alert("Please, plomplete all fields");
+    return false;
+  } else {
+    const response = await fetch("http://localhost:8080/auth/sign-up", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        roleRequest: {
+          roleListName: ["GUEST"],
+        },
+      }),
+    });
+    alert(response.status);
+    login();
+  }
 }
 
 function login() {
